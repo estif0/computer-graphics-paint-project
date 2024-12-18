@@ -174,11 +174,7 @@ const Canvas = () => {
     if (currentTool === "brush") {
       ctx.beginPath();
       ctx.moveTo(lastPoint.x, lastPoint.y);
-      if (e.shiftKey) {
-        drawLineBresenham(ctx, lastPoint.x, lastPoint.y, point.x, point.y);
-      } else {
-        drawLineDDA(ctx, lastPoint.x, lastPoint.y, point.x, point.y);
-      }
+      drawLineDDA(ctx, lastPoint.x, lastPoint.y, point.x, point.y);
     } else if (currentTool === "eraser") {
       const originalStyle = ctx.strokeStyle;
       ctx.strokeStyle = "white";
