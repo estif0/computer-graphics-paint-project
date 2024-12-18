@@ -1,20 +1,20 @@
-import { 
-  Paintbrush, 
-  Eraser, 
-  Circle, 
-  Square, 
+import {
+  Paintbrush,
+  Eraser,
+  Circle,
+  Square,
   Triangle,
-  Undo2, 
-  Redo2, 
+  Undo2,
+  Redo2,
   Download,
   Trash2,
-  Grid
-} from 'lucide-react';
-import { useDrawingContext } from '../contexts/DrawingContext';
+  Grid,
+} from "lucide-react";
+import { useDrawingContext } from "../contexts/DrawingContext";
 
 const Toolbar = () => {
-  const { 
-    currentTool, 
+  const {
+    currentTool,
     setCurrentTool,
     strokeColor,
     setStrokeColor,
@@ -26,15 +26,15 @@ const Toolbar = () => {
     showGrid,
     setShowGrid,
     gridSize,
-    setGridSize
+    setGridSize,
   } = useDrawingContext();
 
   const tools = [
-    { id: 'brush', icon: Paintbrush, tooltip: 'Brush' },
-    { id: 'eraser', icon: Eraser, tooltip: 'Eraser' },
-    { id: 'circle', icon: Circle, tooltip: 'Circle' },
-    { id: 'rectangle', icon: Square, tooltip: 'Rectangle' },
-    { id: 'triangle', icon: Triangle, tooltip: 'Triangle' }
+    { id: "brush", icon: Paintbrush, tooltip: "Brush" },
+    { id: "eraser", icon: Eraser, tooltip: "Eraser" },
+    { id: "circle", icon: Circle, tooltip: "Circle" },
+    { id: "rectangle", icon: Square, tooltip: "Rectangle" },
+    { id: "triangle", icon: Triangle, tooltip: "Triangle" },
   ];
 
   const handleUndo = () => {
@@ -43,8 +43,8 @@ const Toolbar = () => {
       const img = new Image();
       img.src = canvasHistory[historyIndex - 1];
       img.onload = () => {
-        const canvas = document.querySelector('canvas');
-        const ctx = canvas.getContext('2d');
+        const canvas = document.querySelector("canvas");
+        const ctx = canvas.getContext("2d");
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.drawImage(img, 0, 0);
       };
@@ -57,8 +57,8 @@ const Toolbar = () => {
       const img = new Image();
       img.src = canvasHistory[historyIndex + 1];
       img.onload = () => {
-        const canvas = document.querySelector('canvas');
-        const ctx = canvas.getContext('2d');
+        const canvas = document.querySelector("canvas");
+        const ctx = canvas.getContext("2d");
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.drawImage(img, 0, 0);
       };
@@ -66,39 +66,31 @@ const Toolbar = () => {
   };
 
   const handleClear = () => {
-    const canvas = document.querySelector('canvas');
-    const ctx = canvas.getContext('2d');
-    ctx.fillStyle = 'white';
+    const canvas = document.querySelector("canvas");
+    const ctx = canvas.getContext("2d");
+    ctx.fillStyle = "white";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
   };
 
   const handleSave = (format) => {
-    const canvas = document.querySelector('canvas');
-    const link = document.createElement('a');
-    
+    const canvas = document.querySelector("canvas");
+    const link = document.createElement("a");
+
     switch (format) {
-      case 'png':
-        link.download = 'drawing.png';
+      case "png":
+        link.download = "drawing.png";
         link.href = canvas.toDataURL();
         break;
-      case 'jpeg':
-        link.download = 'drawing.jpg';
-        link.href = canvas.toDataURL('image/jpeg');
+      case "jpeg":
+        link.download = "drawing.jpg";
+        link.href = canvas.toDataURL("image/jpeg");
         break;
-      case 'svg':
-        // Basic SVG export - could be enhanced
-        const svg = `
-          <svg width="${canvas.width}" height="${canvas.height}" 
-               xmlns="http://www.w3.org/2000/svg">
-            <image href="${canvas.toDataURL()}" />
-          </svg>
-        `;
-        const blob = new Blob([svg], { type: 'image/svg+xml' });
-        link.download = 'drawing.svg';
-        link.href = URL.createObjectURL(blob);
+      case "svg":
+        // Basic SVG export research required
+
         break;
     }
-    
+
     link.click();
   };
 
@@ -109,7 +101,7 @@ const Toolbar = () => {
           <button
             key={id}
             className={`p-2 rounded hover:bg-gray-100 ${
-              currentTool === id ? 'bg-blue-100' : ''
+              currentTool === id ? "bg-blue-100" : ""
             }`}
             onClick={() => setCurrentTool(id)}
             title={tooltip}
@@ -139,7 +131,9 @@ const Toolbar = () => {
       <div className="border-t pt-4">
         <div className="flex flex-col gap-2">
           <button
-            className={`p-2 rounded hover:bg-gray-100 ${showGrid ? 'bg-blue-100' : ''}`}
+            className={`p-2 rounded hover:bg-gray-100 ${
+              showGrid ? "bg-blue-100" : ""
+            }`}
             onClick={() => setShowGrid(!showGrid)}
             title="Toggle Grid"
           >
@@ -182,19 +176,19 @@ const Toolbar = () => {
         <div className="flex flex-col gap-2">
           <button
             className="flex items-center gap-2 p-2 rounded hover:bg-gray-100"
-            onClick={() => handleSave('png')}
+            onClick={() => handleSave("png")}
           >
             <Download size={20} /> PNG
           </button>
           <button
             className="flex items-center gap-2 p-2 rounded hover:bg-gray-100"
-            onClick={() => handleSave('jpeg')}
+            onClick={() => handleSave("jpeg")}
           >
             <Download size={20} /> JPEG
           </button>
           <button
             className="flex items-center gap-2 p-2 rounded hover:bg-gray-100"
-            onClick={() => handleSave('svg')}
+            onClick={() => handleSave("svg")}
           >
             <Download size={20} /> SVG
           </button>
