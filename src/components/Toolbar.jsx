@@ -30,11 +30,16 @@ const Toolbar = () => {
   } = useDrawingContext();
 
   const tools = [
-    { id: "brush", icon: Paintbrush, tooltip: "Brush" },
-    { id: "eraser", icon: Eraser, tooltip: "Eraser" },
-    { id: "circle", icon: Circle, tooltip: "Circle" },
-    { id: "rectangle", icon: Square, tooltip: "Rectangle" },
-    { id: "triangle", icon: Triangle, tooltip: "Triangle" },
+    { id: "brush", icon: Paintbrush, tooltip: "Brush", text: "እስራስ" },
+    { id: "eraser", icon: Eraser, tooltip: "Eraser", text: "ላጲስ" },
+    { id: "circle", icon: Circle, tooltip: "Circle", text: "ክብ" },
+    { id: "rectangle", icon: Square, tooltip: "Rectangle", text: "አራት መዐዝን" },
+    {
+      id: "triangle",
+      icon: Triangle,
+      tooltip: "Triangle",
+      text: "ሳስት መዐዝን",
+    },
   ];
 
   const handleUndo = () => {
@@ -86,7 +91,7 @@ const Toolbar = () => {
         link.href = canvas.toDataURL("image/jpeg");
         break;
       case "svg":
-        // Basic SVG export research required
+        //to be implemented
 
         break;
     }
@@ -97,7 +102,7 @@ const Toolbar = () => {
   return (
     <div className="flex flex-col gap-4 p-4 bg-white shadow-lg rounded-lg">
       <div className="flex flex-col gap-2">
-        {tools.map(({ id, icon: Icon, tooltip }) => (
+        {tools.map(({ id, icon: Icon, tooltip, text }) => (
           <button
             key={id}
             className={`p-2 rounded hover:bg-gray-100 ${
@@ -107,6 +112,7 @@ const Toolbar = () => {
             title={tooltip}
           >
             <Icon size={24} />
+            <span>{text}</span>
           </button>
         ))}
       </div>

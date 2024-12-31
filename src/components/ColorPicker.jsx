@@ -1,15 +1,20 @@
-import { useState } from 'react';
-import { useDrawingContext } from '../contexts/DrawingContext';
+import { useState } from "react";
+import { useDrawingContext } from "../contexts/DrawingContext";
 
 const ColorPicker = () => {
   const { strokeColor, setStrokeColor } = useDrawingContext();
   const [showColorHistory, setShowColorHistory] = useState(false);
-  const [colorHistory, setColorHistory] = useState(['#000000', '#ff0000', '#00ff00', '#0000ff']);
+  const [colorHistory, setColorHistory] = useState([
+    "#000000",
+    "#ff0000",
+    "#00ff00",
+    "#0000ff",
+  ]);
 
   const handleColorChange = (color) => {
     setStrokeColor(color);
     if (!colorHistory.includes(color)) {
-      setColorHistory(prev => [color, ...prev.slice(0, 19)]);
+      setColorHistory((prev) => [color, ...prev.slice(0, 19)]);
     }
   };
 
@@ -33,7 +38,7 @@ const ColorPicker = () => {
           onClick={() => setShowColorHistory(!showColorHistory)}
           className="text-sm text-gray-600 hover:text-gray-900"
         >
-          History
+          የቀለም ታሪክ
         </button>
       </div>
 

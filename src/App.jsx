@@ -21,7 +21,7 @@ function App() {
       <div className="min-h-screen bg-gray-100 p-8">
         <div className="max-w-screen-2xl mx-auto">
           <div className="flex items-center justify-between mb-8">
-            <h1 className="text-3xl font-bold text-gray-800">React Paint</h1>
+            <h1 className="text-3xl font-bold text-gray-800">ስዕል መሳያ</h1>
             <div className="flex items-center gap-4">
               <ColorPicker />
               <ResizeCanvas onResize={handleCanvasResize} />
