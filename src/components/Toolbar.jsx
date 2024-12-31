@@ -87,8 +87,8 @@ const Toolbar = () => {
         link.href = canvas.toDataURL();
         break;
       case "jpeg":
-        link.download = "drawing.jpg";
-        link.href = canvas.toDataURL("image/jpeg");
+        // link.download = "drawing.jpg";
+        // link.href = canvas.toDataURL("image/jpeg");
         break;
       case "svg":
         //to be implemented
@@ -167,6 +167,7 @@ const Toolbar = () => {
           title="Undo"
         >
           <Undo2 size={24} />
+          ወደኋላ
         </button>
         <button
           className="p-2 rounded hover:bg-gray-100 disabled:opacity-50"
@@ -175,6 +176,7 @@ const Toolbar = () => {
           title="Redo"
         >
           <Redo2 size={24} />
+          ወደፊት
         </button>
       </div>
 
@@ -184,19 +186,7 @@ const Toolbar = () => {
             className="flex items-center gap-2 p-2 rounded hover:bg-gray-100"
             onClick={() => handleSave("png")}
           >
-            <Download size={20} /> PNG
-          </button>
-          <button
-            className="flex items-center gap-2 p-2 rounded hover:bg-gray-100"
-            onClick={() => handleSave("jpeg")}
-          >
-            <Download size={20} /> JPEG
-          </button>
-          <button
-            className="flex items-center gap-2 p-2 rounded hover:bg-gray-100"
-            onClick={() => handleSave("svg")}
-          >
-            <Download size={20} /> SVG
+            <Download size={20} /> ሰዕሉን አውርድ
           </button>
         </div>
       </div>
@@ -206,7 +196,7 @@ const Toolbar = () => {
         onClick={handleClear}
         title="Clear Canvas"
       >
-        <Trash2 size={24} />
+        <Trash2 size={24} /> አጥፋ
       </button>
     </div>
   );
