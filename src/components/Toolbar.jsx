@@ -30,15 +30,20 @@ const Toolbar = () => {
   } = useDrawingContext();
 
   const tools = [
-    { id: "brush", icon: Paintbrush, tooltip: "Brush", text: "እስራስ" },
-    { id: "eraser", icon: Eraser, tooltip: "Eraser", text: "ላጲስ" },
-    { id: "circle", icon: Circle, tooltip: "Circle", text: "ክብ" },
-    { id: "rectangle", icon: Square, tooltip: "Rectangle", text: "አራት መዐዝን" },
+    { id: "brush", icon: Paintbrush, tooltip: "Brush", text: "እስራስ/qubeessaa" },
+    { id: "eraser", icon: Eraser, tooltip: "Eraser", text: "ላጲስ/haqxuu" },
+    { id: "circle", icon: Circle, tooltip: "Circle", text: "ክብ/geengoo" },
+    {
+      id: "rectangle",
+      icon: Square,
+      tooltip: "Rectangle",
+      text: "አራት መዐዝን/rog-arfee",
+    },
     {
       id: "triangle",
       icon: Triangle,
       tooltip: "Triangle",
-      text: "ሳስት መዐዝን",
+      text: "ሳስት መዐዝን/roga sadii",
     },
   ];
 
@@ -167,7 +172,7 @@ const Toolbar = () => {
           title="Undo"
         >
           <Undo2 size={24} />
-          ወደኋላ
+          ወደኋላ/gara duubaa
         </button>
         <button
           className="p-2 rounded hover:bg-gray-100 disabled:opacity-50"
@@ -176,7 +181,7 @@ const Toolbar = () => {
           title="Redo"
         >
           <Redo2 size={24} />
-          ወደፊት
+          ወደፊት/gara duraa
         </button>
       </div>
 
@@ -186,7 +191,7 @@ const Toolbar = () => {
             className="flex items-center gap-2 p-2 rounded hover:bg-gray-100"
             onClick={() => handleSave("png")}
           >
-            <Download size={20} /> ሰዕሉን አውርድ
+            <Download size={20} /> ሰዕሉን አውርድ/buusuu
           </button>
         </div>
       </div>
@@ -196,7 +201,7 @@ const Toolbar = () => {
         onClick={handleClear}
         title="Clear Canvas"
       >
-        <Trash2 size={24} /> አጥፋ
+        <Trash2 size={24} /> አጥፋ/haquu
       </button>
     </div>
   );

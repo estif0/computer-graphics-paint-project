@@ -36,9 +36,9 @@ const ColorPicker = () => {
         />
         <button
           onClick={() => setShowColorHistory(!showColorHistory)}
-          className="text-sm text-gray-600 hover:text-gray-900"
+          className="text-sm text-gray-700 hover:text-gray-900"
         >
-          የቀለም ታሪክ
+          የቀለም ታሪክ/seenaa halluu
         </button>
       </div>
 
